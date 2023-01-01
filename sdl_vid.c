@@ -13,7 +13,7 @@
 /* malloc() and friends */
 #include <stdlib.h>
 /* Lovely SDL */
-#include <SDL.h>
+#include <SDL/SDL.h>
 
 #include "def.h"
 #include "hardware.h"
@@ -192,7 +192,7 @@ void vgapal(Sint4 pal)
 	currpal = pal;
 }
 
-inline Uint4 BGR565(Uint3 r, Uint3 g, Uint3 b) { return (((r&~7) << 8)|((g&~3) << 3)|(b >> 3)); }
+Uint4 BGR565(Uint3 r, Uint3 g, Uint3 b) { return (((r&~7) << 8)|((g&~3) << 3)|(b >> 3)); }
 
 void doscreenupdate(void)
 {

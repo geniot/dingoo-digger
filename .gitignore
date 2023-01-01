@@ -2,3 +2,5 @@
 *.o
 *.opk
 Release
+.idea
+cmake-build-debug

@@ -17,7 +17,7 @@
 #endif
 
 #ifdef _SDL
-#include <SDL.h>
+#include <SDL/SDL.h>
 #endif
 
 struct scdat

@@ -10,7 +10,7 @@
 #endif
 
 #if defined _SDL || defined _SDL_SOUND
-#include <SDL.h>
+#include <SDL/SDL.h>
 #include "sdl_snd.h"
 #endif
 

@@ -2,6 +2,8 @@
 #include <string.h>
 #include <stdlib.h>
 #include "def.h"
+#include "fbsd_sup.h"
+
 #ifdef WIN32
 #include "win_dig.h"
 #endif
@@ -59,11 +61,11 @@ void WriteINIString(char *section,char *key,char *value,char *filename)
   p=buffer;
   do {
     p=sgets(p,s1);
-    if (stricmp(s1,s2)==0) {
+    if (strcasecmp(s1,s2)==0) {
       do {
         p0=p;
         p=sgets(p,s1);
-        if (strnicmp(s1,s3,strlen(s3))==0) {
+        if (strncasecmp(s1,s3,strlen(s3))==0) {
           fp=fopen(filename,"wb");
           if (fp==NULL) {
             free(buffer);
@@ -120,11 +122,11 @@ void GetINIString(char *section,char *key,char *def,char *dest,
   do {
     fgets(s1,80,fp);
     sgets(s1,s1);
-    if (stricmp(s1,s2)==0) {
+    if (strcasecmp(s1,s2)==0) {
       do {
         fgets(s1,80,fp);
         sgets(s1,s1);
-        if (strnicmp(s1,s3,strlen(s3))==0) {
+        if (strncasecmp(s1,s3,strlen(s3))==0) {
           strcpy(dest,s1+strlen(s3));
           fclose(fp);
           return;

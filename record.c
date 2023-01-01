@@ -15,7 +15,7 @@
 #if defined (_WINDOWS) && !defined (WIN32)
 #include <malloc.h>
 #else
-#include <alloc.h>
+#include <stdlib.h>
 #endif
 #endif
 
@@ -23,7 +23,7 @@
 #include "win_dig.h"
 #endif
 
-char huge *recb,huge *plb,huge *plp;
+char  *recb, *plb, *plp;
 
 bool playing=FALSE,savedrf=FALSE,gotname=FALSE,gotgame=FALSE,drfvalid=TRUE,
      kludge=FALSE;
@@ -126,8 +126,8 @@ void openplay(char *name)
   fseek(playf,0,SEEK_END);
   l=ftell(playf)-i;
   fseek(playf,i,SEEK_SET);
-  plb=plp=(char huge *)farmalloc(l);
-  if (plb==(char huge *)NULL) {
+  plb=plp=(char  *)malloc(l);
+  if (plb==(char  *)NULL) {
     fclose(playf);
     escape=TRUE;
     return;
@@ -146,7 +146,7 @@ void openplay(char *name)
   game();
   gotgame=TRUE;
   playing=FALSE;
-  farfree(plb);
+  free(plb);
   gauntlet=origg;
   gtime=origgtime;
   kludge=FALSE;
@@ -165,10 +165,10 @@ void recstart(void)
       s>>=1;
   } while (recb==(char huge *)NULL && s>1024);
 #else
-  Uint5 s=farcoreleft();
+  Uint5 s=MAX_REC_BUFFER;//farcoreleft();
   if (s>MAX_REC_BUFFER)
     s=MAX_REC_BUFFER;
-  recb=(char huge *)farmalloc(s);
+  recb=(char  *)malloc(s);
 #endif
   if (recb==NULL) {
     finish();

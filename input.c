@@ -8,7 +8,7 @@
 #include "win_dig.h"
 #endif
 #ifdef _SDL
-#include <SDL.h>
+#include <SDL/SDL.h>
 #endif
 
 bool escape=FALSE,firepflag=FALSE,aleftpressed=FALSE,arightpressed=FALSE,

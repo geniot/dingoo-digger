@@ -10,7 +10,7 @@
  * --------------------------------------------------------------------------- 
  */
 
-#include <SDL.h>
+#include <SDL/SDL.h>
 
 #include "def.h"
 #include "hardware.h"
